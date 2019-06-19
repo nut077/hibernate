@@ -1,0 +1,27 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2
+
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=10;AUTO_RECONNECT=TRUE;CIPHER=AES;DB_CLOSE_ON_EXIT=FALSE; #DB_CLOSE_DELAY=10 ทันทีที่ connection ตัวสุดท้าย close ไป ให้รอ 10 วินาทีถึงจะทำการ close database เมื่อ CIPHER=AES คือการ database encode file
+    username: sa
+    password:
+
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop #create-drop สร้าง schema ต่างๆที่เราได้ทำใน entity และจำ destroy schema เมื่อทำการปิด project #สร้าง schema แต่ไม่ destroy
+    properties:
+      hibernate.format_sql: true #ให้ format อยู่ในรูปที่อ่านง่ายขึ้น default = false
+      hibernate.generate_statistics: true #วิเคราะได้ว่า query นี้ทำการเปิด ปิด connect เท่าไร จำนวนเวลา
+      hibernate.query.immutable_entity_update_query_handling_mode: exception  #(warning | exception) default is warning
+    open-in-view: false #defalut คือ true jpa จะเปิด session เมื่ออยู่หน้า view
+
+    #for handle 404 exception
+  mvc:
+    throw-exception-if-no-handler-found: true
+    log-resolved-exception: false
+  resources:
+    add-mappings: false
