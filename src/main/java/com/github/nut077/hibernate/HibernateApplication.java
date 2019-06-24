@@ -11,46 +11,41 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @RequiredArgsConstructor
-public class HibernateOneToOneApplication implements CommandLineRunner {
+public class HibernateApplication implements CommandLineRunner {
 
     private final InstructorRepository instructorRepository;
     private final InstructorDetailRepository instructorDetailRepository;
 
     public static void main(String[] args) {
-        SpringApplication.run(HibernateOneToOneApplication.class, args);
+        SpringApplication.run(HibernateApplication.class, args);
     }
 
     @Override
     public void run(String... args) {
-        InstructorDetail instructorDetail = InstructorDetail.builder()
-                .youtubeChannel("https://www.youtube.com/freedom")
-                .hobby("football").build();
 
         Instructor instructor = Instructor.builder()
                 .firstName("Nut")
                 .lastName("Freedom")
                 .email("nut@mail.com")
-                .instructorDetail(instructorDetail).build();
-
-        InstructorDetail instructorDetail2 = InstructorDetail.builder()
-                .youtubeChannel("https://www.youtube.com/rican")
-                .hobby("cartoon").build();
+                .instructorDetail(InstructorDetail.builder()
+                        .youtubeChannel("https://www.youtube.com/freedom")
+                        .hobby("football").build()).build();
 
         Instructor instructor2 = Instructor.builder()
                 .firstName("Rican")
                 .lastName("Freedom")
                 .email("nut@mail.com")
-                .instructorDetail(instructorDetail2).build();
-
-        InstructorDetail instructorDetail3 = InstructorDetail.builder()
-                .youtubeChannel("https://www.youtube.com/arashi")
-                .hobby("animal").build();
+                .instructorDetail(InstructorDetail.builder()
+                        .youtubeChannel("https://www.youtube.com/rican")
+                        .hobby("cartoon").build()).build();
 
         Instructor instructor3 = Instructor.builder()
                 .firstName("Arashi")
                 .lastName("Freedom")
                 .email("nut@mail.com")
-                .instructorDetail(instructorDetail3).build();
+                .instructorDetail(InstructorDetail.builder()
+                        .youtubeChannel("https://www.youtube.com/arashi")
+                        .hobby("animal").build()).build();
 
         instructorRepository.save(instructor);
         instructorRepository.save(instructor2);

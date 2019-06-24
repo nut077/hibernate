@@ -5,9 +5,9 @@ spring:
       path: /h2
 
   datasource:
-    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=10;AUTO_RECONNECT=TRUE;CIPHER=AES;DB_CLOSE_ON_EXIT=FALSE; #DB_CLOSE_DELAY=10 ทันทีที่ connection ตัวสุดท้าย close ไป ให้รอ 10 วินาทีถึงจะทำการ close database เมื่อ CIPHER=AES คือการ database encode file
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=10;AUTO_RECONNECT=TRUE;DB_CLOSE_ON_EXIT=FALSE; #DB_CLOSE_DELAY=10 ทันทีที่ connection ตัวสุดท้าย close ไป ให้รอ 10 วินาทีถึงจะทำการ close database เมื่อ CIPHER=AES คือการ database encode file
     username: sa
-    password:
+    password: 
 
   jpa:
     show-sql: true
