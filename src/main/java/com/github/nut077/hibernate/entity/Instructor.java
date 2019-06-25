@@ -8,11 +8,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity(name = "instructors")
+@SequenceGenerator(name = "instructors_seq")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@SequenceGenerator(name = "instructors_seq")
 @Table(indexes = {
         @Index(name = "instructors_idx_first_name", columnList = "firstName")
 })

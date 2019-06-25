@@ -1,29 +1,19 @@
 package com.github.nut077.hibernate;
 
-import com.github.nut077.hibernate.entity.Instructor;
-import com.github.nut077.hibernate.entity.InstructorDetail;
-import com.github.nut077.hibernate.repository.InstructorDetailRepository;
-import com.github.nut077.hibernate.repository.InstructorRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@RequiredArgsConstructor
-public class HibernateApplication implements CommandLineRunner {
-
-    private final InstructorRepository instructorRepository;
-    private final InstructorDetailRepository instructorDetailRepository;
+public class HibernateApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HibernateApplication.class, args);
     }
 
-    @Override
+    /*@Override
     public void run(String... args) {
 
-        Instructor instructor = Instructor.builder()
+        *//*Instructor instructor = Instructor.builder()
                 .firstName("Nut")
                 .lastName("Freedom")
                 .email("nut@mail.com")
@@ -70,6 +60,6 @@ public class HibernateApplication implements CommandLineRunner {
         }
         if (instructorDeleteSelf != null) {
             instructorRepository.delete(instructorDeleteSelf);
-        }
-    }
+        }*//*
+    }*/
 }
