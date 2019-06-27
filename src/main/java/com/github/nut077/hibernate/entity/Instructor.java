@@ -1,11 +1,9 @@
 package com.github.nut077.hibernate.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "instructors")
 @SequenceGenerator(name = "instructors_seq")
@@ -13,6 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@ToString(exclude = "courses")
 @Table(indexes = {
         @Index(name = "instructors_idx_first_name", columnList = "firstName")
 })
@@ -28,4 +27,12 @@ public class Instructor {
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "instructor_detail_id")
     private InstructorDetail instructorDetail;
+
+    @OneToMany(mappedBy = "instructor", cascade = CascadeType.ALL)
+    private List<Course> courses;
+
+    public void setCourses(List<Course> courses) {
+        courses.forEach(course -> course.setInstructor(this));
+        this.courses = courses;
+    }
 }

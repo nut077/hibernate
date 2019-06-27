@@ -26,7 +26,12 @@ public class InstructorController {
 
     @PostMapping("/instructors")
     public ResponseEntity<Instructor> create(@RequestBody Instructor instructor) {
-        return ResponseEntity.ok(instructorService.save(instructor));
+        return ResponseEntity.ok(instructorService.create(instructor));
+    }
+
+    @PutMapping("/instructors/{id}")
+    public ResponseEntity<Instructor> update(@PathVariable Long id, @RequestBody Instructor instructor) {
+        return ResponseEntity.ok(instructorService.update(id, instructor));
     }
 
     @DeleteMapping("/instructors/{id}")

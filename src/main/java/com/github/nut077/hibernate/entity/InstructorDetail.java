@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString(exclude = {"instructor"})
+@ToString(exclude = {"id", "instructor"})
 public class InstructorDetail {
 
     @Id

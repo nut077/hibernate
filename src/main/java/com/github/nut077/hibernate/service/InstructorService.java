@@ -21,7 +21,13 @@ public class InstructorService {
         return instructorRepository.findAll();
     }
 
-    public Instructor save(Instructor instructor) {
+    public Instructor create(Instructor instructor) {
+        return instructorRepository.save(instructor);
+    }
+
+    public Instructor update(Long id, Instructor instructor) {
+        instructor.setId(id);
+        instructor.getInstructorDetail().setId(id);
         return instructorRepository.save(instructor);
     }
 
