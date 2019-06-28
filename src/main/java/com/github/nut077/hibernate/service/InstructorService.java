@@ -7,6 +7,7 @@ import com.github.nut077.hibernate.repository.InstructorDetailRepository;
 import com.github.nut077.hibernate.repository.InstructorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -17,6 +18,7 @@ public class InstructorService {
     private final InstructorRepository instructorRepository;
     private final InstructorDetailRepository instructorDetailRepository;
 
+    @Transactional
     public List<Instructor> findAll() {
         return instructorRepository.findAll();
     }
