@@ -14,7 +14,7 @@ spring:
     hibernate:
       ddl-auto: create-drop #create-drop สร้าง schema ต่างๆที่เราได้ทำใน entity และจำ destroy schema เมื่อทำการปิด project #สร้าง schema แต่ไม่ destroy
     properties:
-      hibernate.format_sql: true #ให้ format อยู่ในรูปที่อ่านง่ายขึ้น default = false
+      hibernate.format_sql: false #ให้ format อยู่ในรูปที่อ่านง่ายขึ้น default = false
       hibernate.generate_statistics: true #วิเคราะได้ว่า query นี้ทำการเปิด ปิด connect เท่าไร จำนวนเวลา
       hibernate.query.immutable_entity_update_query_handling_mode: exception  #(warning | exception) default is warning
     open-in-view: false #defalut คือ true jpa จะเปิด session เมื่ออยู่หน้า view

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "courses")
 @SequenceGenerator(name = "courses_id")
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@ToString(exclude = {"id", "instructor"})
+@ToString(exclude = {"id", "instructor", "reviews"})
 public class Course {
 
     @Id
@@ -20,8 +21,12 @@ public class Course {
 
     private String title;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "instructor_id")
     @JsonIgnore
     private Instructor instructor;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "course_id")
+    private List<Review> reviews;
 }

@@ -6,6 +6,7 @@ import com.github.nut077.hibernate.exception.NotFoundException;
 import com.github.nut077.hibernate.repository.InstructorDetailRepository;
 import com.github.nut077.hibernate.repository.InstructorRepository;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,7 +21,12 @@ public class InstructorService {
 
     @Transactional
     public List<Instructor> findAll() {
-        return instructorRepository.findAll();
+        List<Instructor> instructors = instructorRepository.findAll();
+        instructors.forEach(instructor -> {
+            Hibernate.initialize(instructor.getCourses());
+            instructor.getCourses().forEach(course -> Hibernate.initialize(course.getReviews()));
+        });
+        return instructors;
     }
 
     public Instructor create(Instructor instructor) {
